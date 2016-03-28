@@ -15,10 +15,7 @@
         <!--android:layout_centerHorizontal="true" />-->
 
 
-    <ImageView
-        android:id="@+id/Logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
 
     <TextView
@@ -29,15 +26,20 @@
         android:layout_marginTop="210dp"
         android:layout_below="@+id/Logo"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/departingFromEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/departingFromText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/flyingToTextView"
@@ -46,15 +48,21 @@
         android:text="Flying To:"
         android:layout_below="@+id/departingFromEditText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/flyingToEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/flyingToTextView"
         android:layout_alignRight="@+id/oneWayButton"
-        android:layout_alignEnd="@+id/oneWayButton" />
+        android:layout_alignEnd="@+id/oneWayButton"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/departDateTextView"
@@ -63,15 +71,21 @@
         android:text="Depart Date:"
         android:layout_below="@+id/flyingToEditText"
         android:layout_toRightOf="@+id/Logo"
-        android:layout_toEndOf="@+id/Logo" />
+        android:layout_toEndOf="@+id/Logo"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/departDateEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/departDateTextView"
         android:layout_alignRight="@+id/oneWayButton"
-        android:layout_alignEnd="@+id/oneWayButton" />
+        android:layout_alignEnd="@+id/oneWayButton"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/passengersNumber"
@@ -80,16 +94,23 @@
         android:text="Passengers"
         android:layout_below="@+id/departDateEditText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/passengersEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="1 Travel"
         android:layout_below="@+id/passengersNumber"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="#FFFFFF"
+        android:textColor="#878686"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"/>
 
 
 

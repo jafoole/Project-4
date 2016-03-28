@@ -21,47 +21,78 @@
         android:text="Departing From:"
         android:id="@+id/departingFromText"
         android:layout_marginTop="210dp"
-        android:layout_below="@+id/fragment_container"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"/>
 
-    <EditText
-        android:id="@+id/departingFromEditText"
+
+    <AutoCompleteTextView
+        android:id="@+id/departingFrom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/departingFromText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/departingFrom"
+        android:background="#FFFFFF"
+        android:elevation="1dp"/>
+
+
 
     <TextView
         android:id="@+id/flyingToTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Flying To:"
-        android:layout_below="@+id/departingFromEditText"
+        android:layout_below="@+id/departingFrom"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
 
-    <EditText
-        android:id="@+id/flyingToEditText"
+    <AutoCompleteTextView
+        android:id="@+id/flyingTo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/flyingToTextView" />
+        android:layout_height="40dp"
+        android:layout_below="@+id/flyingToTextView"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"
+        />
 
     <TextView
         android:id="@+id/departDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Depart Date:"
-        android:layout_below="@+id/flyingToEditText"
+        android:layout_below="@+id/flyingTo"
         android:layout_toRightOf="@+id/Logo"
-        android:layout_toEndOf="@+id/Logo" />
+        android:layout_toEndOf="@+id/Logo"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/departDateEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/departDateTextView" />
+        android:layout_height="40dp"
+        android:layout_below="@+id/departDateTextView"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"
+        android:inputType="date"/>
 
     <TextView
         android:id="@+id/returnDateTextView"
@@ -70,13 +101,20 @@
         android:text="Return Date:"
         android:layout_below="@+id/departDateEditText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/returnDateEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/returnDateTextView" />
+        android:layout_height="40dp"
+        android:layout_below="@+id/returnDateTextView"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"
+        android:inputType="date"/>
 
     <TextView
         android:id="@+id/passengersNumber"
@@ -85,16 +123,24 @@
         android:text="Passengers"
         android:layout_below="@+id/returnDateEditText"
         android:layout_alignRight="@+id/departDateTextView"
-        android:layout_alignEnd="@+id/departDateTextView" />
+        android:layout_alignEnd="@+id/departDateTextView"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/passengersEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="1 Travel"
         android:layout_below="@+id/passengersNumber"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#878686"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"
+        android:inputType="number"/>
 
 
     <FrameLayout

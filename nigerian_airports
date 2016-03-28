@@ -1,0 +1,123 @@
+[
+  {
+    "cityName" : "Abuja",
+    "airportCode" : "ABV",
+    "airportName" : "Nnamdi Azikiwe International Airport",
+    "countryName" : "Nigeria"
+  }, {
+    "cityName" : "Enugu",
+    "airportCode" : "ENU",
+    "airportName" : "Akanu Ibiam International Airport",
+    "countryName" : "Nigeria"
+  }, {
+    "cityName" : "Kano",
+    "airportCode" : "KAN",
+    "airportName" : "Mallam Aminu Kano International Airport",
+    "countryName" : "Nigeria"
+  }, {
+    "cityName": "Lagos",
+    "airportCode" : "LOS",
+    "airportName" : "Murtala Muhammed International Airport",
+    "countryName" : "Nigeria"
+  }, {
+    "cityName" : "Port Harcourt",
+    "airportCode" : "PHC",
+    "airportName" : "Port Harcourt International Airport",
+    "countryName" : "Nigeria"
+  }, {
+   "cityName": "Bauchi",
+   "airportCode" : "BCU",
+   "airportName" : "Sir Abubakar Tafawa Balewa Airport",
+   "countryName" : "Nigeria"
+  }, {
+    "cityName" : "Calabar",
+    "airportCode" : "CBQ",
+    "airportName" : "Margaret Ekpo International Airport",
+    "countryName" : "Nigeria"
+  }, {
+     "cityName": "Jos",
+     "airportCode" : "JOS",
+     "airportName" : "Yakubu Gowon Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName" : "Kaduna",
+     "airportCode" : "KAD",
+     "airportName" :	"Kaduna Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Maiduguri",
+     "airportCode" : "MIU",
+     "airportName" :	"Maiduguri International Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Sokoto",
+     "airportCode" : "SKO",
+     "airportName" :	"Sadiq Abubakar III International Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Yola",
+     "airportCode" : "YOL",
+     "airportName" :	"Yola Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Asaba",
+     "airportCode" : "ABB",
+     "airportName" :	"Asaba International Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "AKURE",
+     "airportCode" : "AKR",
+     "airportName" :	"Akure Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Benin",
+     "airportCode" : "BNI",
+     "airportName" :	"Benin Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Gombe",
+     "airportCode" : "GMO",
+     "airportName" :	"Gombe Lawanti International Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Ibadan",
+     "airportCode" : "IBA",
+     "airportName" :	"Ibadan Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Illorin",
+     "airportCode" : "ILR",
+     "airportName" :	"Ilorin Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Katsina",
+     "airportCode" : "DKA",
+     "airportName" :	"Katsina Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Makurdi",
+     "airportCode" : "MDI",
+     "airportName" :	"Makurdi Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Minna",
+     "airportCode" : "MXJ",
+     "airportName" :	"Minna Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Owerri",
+     "airportCode" : "QOW",
+     "airportName" : "Sam Mbakwe Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Warri",
+     "airportCode" : "QRW",
+     "airportName" :	"Warri Airport",
+     "countryName" : "Nigeria"
+  }, {
+     "cityName": "Zaria",
+     "airportCode" : "ZAR",
+     "airportName" :	"Zaria Airport",
+     "countryName" : "Nigeria"
+  }
+]
