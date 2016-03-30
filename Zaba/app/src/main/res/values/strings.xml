@@ -5,4 +5,33 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <string-array name="airport_codes">
+        <item>ABV</item>
+        <item>ENU</item>
+        <item>KAN</item>
+        <item>LOS</item>
+        <item>PHC</item>
+        <item>BCU</item>
+        <item>CBQ</item>
+        <item>JOS</item>
+        <item>KAD</item>
+        <item>MIU</item>
+        <item>SKO</item>
+        <item>YOL</item>
+        <item>ABB</item>
+        <item>AKR</item>
+        <item>BNI</item>
+        <item>GMO</item>
+        <item>IBA</item>
+        <item>ILR</item>
+        <item>DKA</item>
+        <item>MDI</item>
+        <item>MXJ</item>
+        <item>QOW</item>
+        <item>QRW</item>
+        <item>ZAR</item>
+        <item>JFK</item>
+    </string-array>
 </resources>
+

@@ -31,7 +31,7 @@
         android:textSize="20sp"/>
 
     <AutoCompleteTextView
-        android:id="@+id/departingFromEditText"
+        android:id="@+id/departingFrom"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/departingFromText"
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Flying To:"
-        android:layout_below="@+id/departingFromEditText"
+        android:layout_below="@+id/departingFrom"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#FFFFFF"
@@ -54,7 +54,7 @@
         android:textSize="20sp"/>
 
     <AutoCompleteTextView
-        android:id="@+id/flyingToEditText"
+        android:id="@+id/flyingTo"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/flyingToTextView"
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Depart Date:"
-        android:layout_below="@+id/flyingToEditText"
+        android:layout_below="@+id/flyingTo"
         android:layout_toRightOf="@+id/Logo"
         android:layout_toEndOf="@+id/Logo"
         android:textColor="#FFFFFF"
@@ -91,7 +91,7 @@
         android:id="@+id/passengersNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Passengers"
+        android:text="Passengers:"
         android:layout_below="@+id/departDateEditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -111,6 +111,19 @@
         android:textColor="#878686"
         android:layout_marginTop="5dp"
         android:singleLine="true"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_arrow_forward_white_24dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="27dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="27dp" />
 
 
 

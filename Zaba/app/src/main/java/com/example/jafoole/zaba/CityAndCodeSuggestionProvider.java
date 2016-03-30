@@ -44,7 +44,7 @@ public class CityAndCodeSuggestionProvider extends ContentProvider {
 
         if (cities == null || cities.isEmpty()){
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url("https://dl.dropboxusercontent.com/u/6802536/cidades.json").build();
+            Request request = new Request.Builder().url("https://zaba.firebaseio.com").build();
 
 
             Response response = null;

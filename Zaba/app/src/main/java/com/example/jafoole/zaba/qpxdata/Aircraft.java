@@ -1,11 +1,13 @@
 
-package com.example.jafoole.zaba;
+package com.example.jafoole.zaba.qpxdata;
+
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class AirportSearch {
+
+public class Aircraft {
 
     @SerializedName("kind")
     @Expose
@@ -13,15 +15,12 @@ public class AirportSearch {
     @SerializedName("code")
     @Expose
     private String code;
-    @SerializedName("city")
-    @Expose
-    private String city;
     @SerializedName("name")
     @Expose
     private String name;
 
     /**
-     *
+     * 
      * @return
      *     The kind
      */
@@ -30,7 +29,7 @@ public class AirportSearch {
     }
 
     /**
-     *
+     * 
      * @param kind
      *     The kind
      */
@@ -39,7 +38,7 @@ public class AirportSearch {
     }
 
     /**
-     *
+     * 
      * @return
      *     The code
      */
@@ -48,7 +47,7 @@ public class AirportSearch {
     }
 
     /**
-     *
+     * 
      * @param code
      *     The code
      */
@@ -57,25 +56,7 @@ public class AirportSearch {
     }
 
     /**
-     *
-     * @return
-     *     The city
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     *
-     * @param city
-     *     The city
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
-     *
+     * 
      * @return
      *     The name
      */
@@ -84,7 +65,7 @@ public class AirportSearch {
     }
 
     /**
-     *
+     * 
      * @param name
      *     The name
      */

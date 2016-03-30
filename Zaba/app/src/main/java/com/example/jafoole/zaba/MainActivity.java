@@ -1,23 +1,47 @@
 package com.example.jafoole.zaba;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 /**          /\     /\      __        _____              __                /\      /\
             \ \    \ \     |__|____ _/ ____\____   ____ |  |   ____       / /     / /
@@ -30,109 +54,76 @@ public class MainActivity extends AppCompatActivity {
 
     AutoCompleteTextView mDepartingFrom;
     AutoCompleteTextView mFlyingTo;
-    EditText mDepartDateEditText;
-    EditText mReturnDateEditText;
+    TextView mDepartDateEditText;
+    TextView mReturnDateEditText;
     EditText mPassengersEditText;
+    String data;
 
     ListView mListView;
 
 
-    private static final String[] COUNTRIES = new String[] {
-            "Belgium", "France", "Italy", "Germany", "Spain"
-    };
+//    private AirportAsyncTask mTask;
+//    private ArrayAdapter<String> mAdapter;
+
+//    private static String mUrl = "https://zaba.firebaseio.com";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_round_trip);
+        setContentView(R.layout.activity_main);
 
-//        mDepartingFrom = (AutoCompleteTextView)findViewById(R.id.departingFromEditText);
-        mFlyingTo = (AutoCompleteTextView)findViewById(R.id.flyingToEditText);
-        mDepartDateEditText = (EditText)findViewById(R.id.departDateEditText);
-        mReturnDateEditText = (EditText)findViewById(R.id.returnDateEditText);
+
+        mDepartDateEditText = (TextView)findViewById(R.id.departDateEditText);
+        mReturnDateEditText = (TextView)findViewById(R.id.returnDateEditText);
         mPassengersEditText = (EditText)findViewById(R.id.passengersEditText);
 
         mListView = (ListView) findViewById(R.id.listView);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, android.R.id.text1, COUNTRIES);
-        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.departingFrom);
-        autoCompleteTextView.setThreshold(1);
-        autoCompleteTextView.setAdapter(adapter);
 
-        AutoCompleteTextView flyingTo = (AutoCompleteTextView)findViewById(R.id.flyingTo);
-        flyingTo.setThreshold(1);
-        flyingTo.setAdapter(adapter);
+//        Fragments for switching between Round-trip and One Way
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        final RoundTripFragment roundTripFragment = new RoundTripFragment();
+        fragmentTransaction.add(R.id.fragment_container, roundTripFragment);
+        fragmentTransaction.commit();
 
+        Button oneWayButton = (Button)findViewById(R.id.oneWayButton);
+        oneWayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction oneWayTransaction = fragmentManager.beginTransaction();
 
-        //Fragments for switching between Round-trip and One Way
-//        final FragmentManager fragmentManager = getSupportFragmentManager();
-//        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//        final RoundTripFragment roundTripFragment = new RoundTripFragment();
-//        fragmentTransaction.add(R.id.fragment_container, roundTripFragment);
-//        fragmentTransaction.commit();
+                OneWayFragment oneWayFragment = new OneWayFragment();
+                oneWayTransaction.replace(R.id.fragment_container, oneWayFragment);
+                oneWayTransaction.commit();
+            }
+        });
 
+        final Button roundTripButton = (Button)findViewById(R.id.roundTripButton);
+        roundTripButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction roundTripTransaction = fragmentManager.beginTransaction();
 
-//        Button oneWayButton = (Button)findViewById(R.id.oneWayButton);
-//        oneWayButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FragmentTransaction oneWayTransaction = fragmentManager.beginTransaction();
-//
-//                OneWayFragment oneWayFragment = new OneWayFragment();
-//                oneWayTransaction.replace(R.id.fragment_container, oneWayFragment);
-//                oneWayTransaction.commit();
-//            }
-//        });
-
-//        final Button roundTripButton = (Button)findViewById(R.id.roundTripButton);
-//        roundTripButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FragmentTransaction roundTripTransaction = fragmentManager.beginTransaction();
-//
-//                RoundTripFragment roundTripFragment = new RoundTripFragment();
-//                roundTripTransaction.replace(R.id.fragment_container, roundTripFragment);
-//                roundTripTransaction.commit();
-//            }
-//        });
+                RoundTripFragment roundTripFragment = new RoundTripFragment();
+                roundTripTransaction.replace(R.id.fragment_container, roundTripFragment);
+                roundTripTransaction.commit();
+            }
+        });
         //End of Fragments
-
-        //Floating action button that sends data from MainActivity to FlightslistActivity.
-        //When the FAB is pressed, the api request is made for the selected locations and dates.
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, FlightsListActivity.class);
-//                startActivity(intent);
-//
-//
-//
-//
-////
-////                Intent newListIntent = new Intent(ListCreateActivity.this, ListCollectionActivty.class);
-////                newListIntent.putExtra(LIST_TAGS,addedString);
-////                newListIntent.putExtra("SCREEN_NAME","listcreateActivity");
-////                setResult(RESULT_OK, newListIntent);
-////
-////                finish();
-//            }
-//        });
-
-
-
 
     }
 
 
 
 
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -157,4 +148,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
 }
+
