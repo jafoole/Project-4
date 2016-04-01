@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jafoole.zaba.RoundTripFragment">
+    tools:context="com.zaba.jafoole.zaba.RoundTripFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <!--<TextView-->
@@ -153,7 +153,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/fab"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="91dp" />
+        android:layout_marginBottom="91dp"
+        android:visibility="gone"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

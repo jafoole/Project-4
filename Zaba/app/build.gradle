@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.example.jafoole.zaba"
+        applicationId "com.zaba.jafoole.zaba"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
@@ -37,4 +37,6 @@ dependencies {
     compile 'com.firebaseui:firebase-ui:0.3.1'
     compile 'com.google.code.gson:gson:2.6'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.google.apis:google-api-services-qpxExpress:v1-rev18-1.21.0'
 }

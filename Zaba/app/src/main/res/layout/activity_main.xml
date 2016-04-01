@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#67c16f"
-    tools:context="com.example.jafoole.zaba.MainActivity">
+    tools:context="com.zaba.jafoole.zaba.MainActivity">
 
 
     <ImageView
@@ -54,15 +54,15 @@
 
 
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_marginTop="96dp"
-        android:background="#FFFFFF"
-        android:elevation="1dp"
-        android:layout_below="@+id/roundTripButton"
-        android:layout_centerHorizontal="true" />
+    <!--<ListView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/listView"-->
+        <!--android:layout_marginTop="96dp"-->
+        <!--android:background="#FFFFFF"-->
+        <!--android:elevation="1dp"-->
+        <!--android:layout_below="@+id/roundTripButton"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
 
 

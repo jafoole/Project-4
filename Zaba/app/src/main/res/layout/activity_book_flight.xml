@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jafoole.zaba.BookFlightActivity">
+    tools:context="com.zaba.jafoole.zaba.BookFlightActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

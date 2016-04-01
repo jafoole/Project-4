@@ -1,4 +1,4 @@
-package com.example.jafoole.zaba;
+package com.zaba.jafoole.zaba;
 
 import org.junit.Test;
 

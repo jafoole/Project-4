@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jafoole.zaba" >
+    package="com.zaba.jafoole.zaba" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.zaba.jafoole.zaba.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,13 +35,13 @@
         </activity>
 
         <provider
-            android:authorities="com.example.jafoole.zaba.CityAndCodeSuggestionProvider"
-            android:name=".CityAndCodeSuggestionProvider"
+            android:authorities="com.zaba.jafoole.zaba.CityAndCodeSuggestionProvider"
+            android:name="com.zaba.jafoole.zaba.CityAndCodeSuggestionProvider"
             android:exported="true"
             android:enabled="true"/>
 
-        <activity android:name=".FlightsListActivity" />
-        <activity android:name=".BookFlightActivity" />
+        <activity android:name="com.zaba.jafoole.zaba.FlightsListActivity" />
+        <activity android:name="com.zaba.jafoole.zaba.BookFlightActivity" />
     </application>
 
 </manifest>
