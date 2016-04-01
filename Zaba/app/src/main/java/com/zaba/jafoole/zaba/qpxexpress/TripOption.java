@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.zaba.jafoole.zaba.Slice;
 
 
 public class TripOption {
@@ -114,6 +115,17 @@ public class TripOption {
     public void setPricing(List<Pricing> pricing) {
         this.pricing = pricing;
     }
+
+    public Slouse getOutboundFlights(){
+        return this.slice.get(0);
+    }
+
+    public Slouse getInboundFlights() {
+        return this.slice.get(1);
+    }
+
+
+
 
 
 

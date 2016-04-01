@@ -8,12 +8,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.zaba.jafoole.zaba.qpxexpress.Response;
+import com.zaba.jafoole.zaba.qpxexpress.TripOption;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class FlightsListActivity extends AppCompatActivity {
 
     ImageView backButton;
     TextView mTravelSelectedTextView;
     TextView mDatesSelectedTextView;
     ListView mListView;
+
+    List<TripOption> tripOptions;
 
 
     @Override
@@ -34,6 +42,18 @@ public class FlightsListActivity extends AppCompatActivity {
 
         mTravelSelectedTextView.setText(depart_from + " - " + fly_to);
         mDatesSelectedTextView.setText(fly_date + " - " + return_date);
+
+        Response returnedResponse = (Response)getIntent().getSerializableExtra("RESPONSE");
+
+
+        tripOptions = returnedResponse.getTrips().getTripOption();
+
+
+
+
+
+
+
 
 
 

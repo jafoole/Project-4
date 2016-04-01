@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.zaba.jafoole.zaba.qpxexpress.*;
 
@@ -109,14 +110,14 @@ public class RoundTripFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                mDepartDateEditText.setText(dayOfMonth + "/" + (monthOfYear+1) +  "/" + year);
+                mDepartDateEditText.setText(year + "-" + (monthOfYear+1) +  "-" + dayOfMonth);
             }
         };
 
         final DatePickerDialog.OnDateSetListener returnListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                mReturnDateEditText.setText(dayOfMonth + "/" + (monthOfYear+1) +  "/" + year);
+                mReturnDateEditText.setText(year + "-" + (monthOfYear+1) +  "-" + dayOfMonth);
             }
         };
 
@@ -141,20 +142,9 @@ public class RoundTripFragment extends Fragment {
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String departFrom = departingFrom.getText().toString();
-                String flyTo = flyingTo.getText().toString();
-                String flyDate = mDepartDateEditText.getText().toString();
-                String returnDate = mReturnDateEditText.getText().toString();
 
                 SearchAsyncTask searchAsyncTask = new SearchAsyncTask();
                 searchAsyncTask.execute();
-
-                Intent intent = new Intent(getContext(), FlightsListActivity.class);
-                intent.putExtra("DEPART_FROM", departFrom);
-                intent.putExtra("FLY_TO", flyTo);
-                intent.putExtra("FLY_DATE",flyDate);
-                intent.putExtra("RETURN_DATE",returnDate);
-                startActivity(intent);
             }
         });
 
@@ -165,15 +155,22 @@ public class RoundTripFragment extends Fragment {
 
     public class SearchAsyncTask extends AsyncTask<String, Void, com.zaba.jafoole.zaba.qpxexpress.Response> {
 
+        String departFrom;
+        String flyTo;
+        String flyDate;
+        String returnDate;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            String departFrom = departingFrom.getText().toString();
-            String flyTo = flyingTo.getText().toString();
-            String flyDate = mDepartDateEditText.getText().toString();
-            String returnDate = mReturnDateEditText.getText().toString();
+            departFrom = departingFrom.getText().toString();
+            flyTo = flyingTo.getText().toString();
+            flyDate = mDepartDateEditText.getText().toString();
+            returnDate = mReturnDateEditText.getText().toString();
+
+
+
 
 
 //            "https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyAHFTNJy-9f4e0BSUN3E1QF-USEOKMNLUA"
@@ -189,13 +186,54 @@ public class RoundTripFragment extends Fragment {
 //            sendPost();
 
 
+            JSONObject theRequest = new JSONObject();
+            JSONObject request = new JSONObject();
+            JSONArray slice = new JSONArray();
+            JSONObject aSlice = new JSONObject();
+//            JSONObject solutions = new JSONObject();
+
+
+            JSONObject passengers = new JSONObject();
+            {
+                try {
+                    passengers.put("adultCount", 1);
+                    request.put("passengers", passengers);
+                    aSlice.put("origin", departFrom);
+
+
+                    aSlice.put("destination", flyTo);
+                    aSlice.put("date", flyDate);
+                    slice.put(0, aSlice);
+                    request.put("slice", slice);
+
+                        request.put("solutions", "1");
+                    theRequest.put("request", request);
+                } catch (JSONException e1) {
+                    e1.printStackTrace();
+                }
+            }
+
+
+
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, theUrl, null, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(theUrl, theRequest, new Response.Listener<JSONObject>() {
 
 
                 @Override
                 public void onResponse(JSONObject response) {
+                    Gson gson = new Gson();
+                    com.zaba.jafoole.zaba.qpxexpress.Response response1 = gson.fromJson(response.toString(), com.zaba.jafoole.zaba.qpxexpress.Response.class);
                     Toast.makeText(getContext(), "Response Completed", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(getContext(), FlightsListActivity.class);
+                    intent.putExtra("DEPART_FROM", departFrom);
+                    intent.putExtra("FLY_TO", flyTo);
+                    intent.putExtra("FLY_DATE",flyDate);
+                    intent.putExtra("RETURN_DATE",returnDate);
+                    intent.putExtra("RESPONSE", response1);
+                    startActivity(intent);
+
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -204,63 +242,7 @@ public class RoundTripFragment extends Fragment {
                 }
             }) {
 
-//                String theRequest = "{\n" +
-//                        "                    \"request\": {\n" +
-//                        "                    \"passengers\": {\n" +
-//                        "                        \"adultCount\": 1\n" +
-//                        "                    },\n" +
-//                        "                    \"slice\": [\n" +
-//                        "                    {\n" +
-//                        "                        \"origin\": \"SFO\",\n" +
-//                        "                            \"destination\": \"LAX\",\n" +
-//                        "                            \"date\": \"2016-05-06\"\n" +
-//                        "                    }\n" +
-//                        "                    ]\n" +
-//                        "                }\n" +
-//                        "                }";
-
-
-                JSONObject theRequest = new JSONObject();
-            JSONObject request = new JSONObject();
-            JSONArray slice = new JSONArray();
-            JSONObject aSlice = new JSONObject();
-//            JSONObject solutions = new JSONObject();
-
-
-            JSONObject passengers = new JSONObject();
-                {
-                    try {
-                        passengers.put("adultCount", "1");
-                        request.put("passengers", passengers);
-                        aSlice.put("origin", "SFO");
-
-
-                        aSlice.put("destination", "LAX");
-                        aSlice.put("date", "2016-13-03");
-                        slice.put(0, aSlice);
-                        request.put("slice", slice);
-
-                        request.put("solutions", "1");
-                        theRequest.put("request", request);
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
-                    }
-            }
-
-                String secondRequestMindYou = theRequest.toString();
-
-
-
-
                 @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("request", secondRequestMindYou);
-
-
-                    return params;
-                }
-
                 public Map<String,String> getHeaders() throws AuthFailureError{
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("Content-Type","application/json; charset=utf-8");
@@ -269,98 +251,22 @@ public class RoundTripFragment extends Fragment {
                     return params;
                 }
             };
+
+            int SLOW_REQUEST_THRESHOLD_MS = 10000;
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    SLOW_REQUEST_THRESHOLD_MS,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+
+            ));
+
             requestQueue.add(jsonObjectRequest);
 
 
 
-//            JSONObject theRequest = new JSONObject();
-//            JSONObject request = new JSONObject();
-//            JSONArray slice = new JSONArray();
-//            JSONObject aSlice = new JSONObject();
-////            JSONObject solutions = new JSONObject();
-//
-//
-//            JSONObject passengers = new JSONObject();
-//            try {
-//                passengers.put("adultCount", "1");
-//                request.put("passengers", passengers);
-//                aSlice.put("origin", "SFO");
-//
-//
-//                aSlice.put("destination", "LAX");
-//                aSlice.put("date", "2016-13-03");
-//                slice.put(0, aSlice);
-//                request.put("slice", slice);
-//
-//                request.put("solutions", "1");
-//                theRequest.put("request", request);
-//
-//
-//            } catch (Throwable e) {
-//                e.printStackTrace();
-//            }
-//
-//            InputStream inputStream = null;
-//
-//            HttpURLConnection conn = null;
-//
-//            OutputStream os = null;
-//
-//            URL url = null;
-//
-//            try {
-//
-//                String theURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBju4kLo3qzq5M_fQ_x9lxeRIiMn1a6B64";
-//                url = new URL(theURL);
-////                String urlParameters  = request.toString();
-//                Log.d("Stuff", url.toString());
-//
-//                String departingFromText = theRequest.toString();
-//                Log.d("DepartingFromText", departingFromText);
-//                conn = (HttpURLConnection) url.openConnection();
-//                conn.setReadTimeout(10000);
-//                conn.setConnectTimeout(15000);
-//                conn.setRequestMethod("POST");
-//                conn.setDoInput(true);
-//                conn.setDoOutput(true);
-//                conn.setFixedLengthStreamingMode(departingFromText.getBytes().length);
-//
-//                //make some HTTP header nicety
-//                conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
-//                conn.setRequestProperty("X-Requested-With", "XMLHttpRequest");
-//
-//                //open
-//                conn.connect();
-//
-//                //setup send
-//                os = new BufferedOutputStream(conn.getOutputStream());
-//                os.write(departingFromText.getBytes());
-//                //clean up
-//                os.flush();
-//
-//                //do something with response
-//                inputStream = conn.getInputStream();
-//                String contentAsString = getInputData(inputStream);
-//                Log.d("Content", contentAsString);
-//
-//                os.close();
-//                inputStream.close();
-//                conn.disconnect();
-//
-//
-//            } catch (Throwable e1) {
-//                e1.printStackTrace();
-//
-//
-//            } finally {
-//                //clean up
-//                try {
-//
-//                } catch (Throwable e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
+
+
+
 
 
             return null;
@@ -370,6 +276,8 @@ public class RoundTripFragment extends Fragment {
         @Override
         protected void onPostExecute(com.zaba.jafoole.zaba.qpxexpress.Response response) {
             super.onPostExecute(response);
+
+
 
 
         }
