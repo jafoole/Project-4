@@ -1,18 +1,23 @@
 package com.zaba.jafoole.zaba;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zaba.jafoole.zaba.qpxexpress.Leg;
 import com.zaba.jafoole.zaba.qpxexpress.Response;
 import com.zaba.jafoole.zaba.qpxexpress.Slouse;
 import com.zaba.jafoole.zaba.qpxexpress.TripOption;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -26,14 +31,14 @@ import java.util.List;
  * on 4/3/16.
  */
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHolder> {
-
-
     private List<TripOption> mTripOption;
 
 
     public CardViewAdapter(List<TripOption> tripOption){
         this.mTripOption = tripOption;
     }
+
+
 
 
     @Override
@@ -71,6 +76,20 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
         holder.mSaleTotal.setText(String.valueOf(responseOption.getSaleTotal()));
 
 
+        holder.setOnItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+
+                Intent intent = new Intent(view.getContext(), BookFlightActivity.class);
+                intent.putExtra("POSITION", (Serializable) mTripOption.get(position));
+//                Toast.makeText(view.getContext(), "Clicked " + position, Toast.LENGTH_SHORT).show();
+
+                view.getContext().startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -79,7 +98,10 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        ItemClickListener itemClickListener;
+
         //Outbound member variables
         protected TextView mOutboundDepartureTime;
         protected TextView mOutboundArrivalTime;
@@ -118,8 +140,29 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
 
             mSaleTotal = (TextView) itemView.findViewById(R.id.saleTotal);
 
+            itemView.setOnClickListener(this);
+
         }
+
+
+        @Override
+        public void onClick(View v) {
+                this.itemClickListener.onItemClick(v, getLayoutPosition());
+
+        }
+
+        public void setOnItemClickListener(final ItemClickListener mOIL){
+            this.itemClickListener = mOIL;
+        }
+
     }
+
+
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+
 
 }
 

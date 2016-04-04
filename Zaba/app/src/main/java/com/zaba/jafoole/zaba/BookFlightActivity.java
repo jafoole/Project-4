@@ -6,7 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.zaba.jafoole.zaba.qpxexpress.Response;
+import com.zaba.jafoole.zaba.qpxexpress.TripOption;
+
+import java.io.Serializable;
 
 public class BookFlightActivity extends AppCompatActivity {
 
@@ -14,21 +20,31 @@ public class BookFlightActivity extends AppCompatActivity {
     ImageView shareButton;
     Button bookButton;
 
+    TextView mTravelSelectedOrigin;
+    TextView mTravelSelectedDestination;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_flight);
 
 
+
+        TripOption flightInfo = (TripOption)getIntent().getSerializableExtra("POSITION");
+
+
         backButton = (ImageView)findViewById(R.id.backButton2);
         shareButton = (ImageView)findViewById(R.id.shareButton);
         bookButton = (Button)findViewById(R.id.bookButton);
+        mTravelSelectedOrigin = (TextView) findViewById(R.id.travelSelectedOrigin);
+        mTravelSelectedDestination = (TextView) findViewById(R.id.travelSelectedDestination);
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backIntent = new Intent(BookFlightActivity.this, FlightsListActivity.class);
-                startActivity(backIntent);
+                finish();
             }
         });
 
@@ -50,5 +66,14 @@ public class BookFlightActivity extends AppCompatActivity {
                 Toast.makeText(BookFlightActivity.this, "Take me to the WebView to book!!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        String origin = flightInfo.getOutboundFlights().getOrigin();
+        String destination = flightInfo.getOutboundFlights().getDestination();
+
+
+        mTravelSelectedOrigin.setText(origin);
+        mTravelSelectedDestination.setText(destination);
+
+
     }
 }

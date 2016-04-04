@@ -26,22 +26,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_back_white_24dp"
-            android:layout_alignTop="@+id/travelSelectedTextView"
+            android:layout_alignTop="@+id/travelSelectedOrigin"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
 
         <TextView
-            android:id="@+id/travelSelectedTextView"
+            android:id="@+id/travelSelectedOrigin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LGA-ABV"
+            android:text="LGA"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:layout_marginTop="25dp"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/backButton2"
             android:layout_toEndOf="@+id/backButton2" />
+
+
+        <TextView
+            android:id="@+id/dashSeparator5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_alignTop="@+id/travelSelectedOrigin"
+            android:layout_toRightOf="@+id/travelSelectedOrigin"
+            android:layout_toEndOf="@+id/travelSelectedOrigin" />
+
+
+        <TextView
+            android:id="@+id/travelSelectedDestination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ABV"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_above="@+id/departDateSelectedTextView"
+            android:layout_toRightOf="@+id/dashSeparator5"
+            android:layout_toEndOf="@+id/dashSeparator5" />
 
         <TextView
             android:id="@+id/departDateSelectedTextView"
@@ -50,9 +74,9 @@
             android:text="Sat, April 16"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:layout_below="@+id/travelSelectedTextView"
-            android:layout_alignLeft="@+id/travelSelectedTextView"
-            android:layout_alignStart="@+id/travelSelectedTextView" />
+            android:layout_below="@+id/travelSelectedOrigin"
+            android:layout_alignLeft="@+id/travelSelectedOrigin"
+            android:layout_alignStart="@+id/travelSelectedOrigin" />
 
         <TextView
             android:id="@+id/returnDateSelectedTextView"
@@ -62,8 +86,8 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:layout_below="@+id/departDateSelectedTextView"
-            android:layout_alignLeft="@+id/travelSelectedTextView"
-            android:layout_alignStart="@+id/travelSelectedTextView" />
+            android:layout_alignLeft="@+id/travelSelectedOrigin"
+            android:layout_alignStart="@+id/travelSelectedOrigin" />
 
         <TextView
             android:id="@+id/datesSelectedTextView1"
@@ -73,8 +97,8 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:layout_below="@+id/returnDateSelectedTextView"
-            android:layout_alignLeft="@+id/travelSelectedTextView"
-            android:layout_alignStart="@+id/travelSelectedTextView" />
+            android:layout_alignLeft="@+id/travelSelectedOrigin"
+            android:layout_alignStart="@+id/travelSelectedOrigin" />
 
         <ImageView
             android:id="@+id/shareButton"

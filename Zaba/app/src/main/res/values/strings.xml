@@ -32,6 +32,8 @@
         <item>QRW</item>
         <item>ZAR</item>
         <item>JFK</item>
+        <item>LGA</item>
+        <item>JAN</item>
     </string-array>
 </resources>
 

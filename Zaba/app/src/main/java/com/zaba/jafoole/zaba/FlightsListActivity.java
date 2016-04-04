@@ -67,78 +67,14 @@ public class FlightsListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
 
-//        if (tripOption.size() == 0) {
-
-
-//            protected TextView mOutboundDepartureTime;
-//            protected TextView mOutboundArrivalTime;
-//            protected TextView mOutboundOrigin;
-//            protected TextView mOutboundDestination;
-//            protected TextView mOutboundDuration;
-//
-//            //Inbound member variables
-//            protected TextView mInboundDepartureTime;
-//            protected TextView mInboundArrivalTime;
-//            protected TextView mInboundOrigin;
-//            protected TextView mInboundDestination;
-//            protected TextView mInboundDuration;
-
-//            String outboundDepartureTime = tripOption.get().getSlice().get().getSegment().get().getLeg().get().getDepartureTime();
-
-
-
-
-
-
-
-
-
-
-
-            //        String theOutboundFlight = String.valueOf(tripOptions.get(3).getOutboundFlights());
-//        String theReturnSegment = String.valueOf(tripOptions.get(3).getOutboundFlights().getSegment());
-
-//        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backIntent = new Intent(FlightsListActivity.this, MainActivity.class);
-                startActivity(backIntent);
+                finish();
             }
         });
-
-
-
-
-
-
-
-
+        
 
     }
 }

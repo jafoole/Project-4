@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
 import com.zaba.jafoole.zaba.Slice;
 
 
-public class TripOption implements Serializable, Parcelable {
+public class TripOption implements Serializable {
 
     @SerializedName("kind")
     @Expose
@@ -129,13 +129,5 @@ public class TripOption implements Serializable, Parcelable {
     }
 
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
