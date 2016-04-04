@@ -1,6 +1,10 @@
 
 package com.zaba.jafoole.zaba.qpxexpress;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
@@ -8,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
 import com.zaba.jafoole.zaba.Slice;
 
 
-public class TripOption {
+public class TripOption implements Serializable, Parcelable {
 
     @SerializedName("kind")
     @Expose
@@ -125,8 +129,13 @@ public class TripOption {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
 
-
-
+    }
 }

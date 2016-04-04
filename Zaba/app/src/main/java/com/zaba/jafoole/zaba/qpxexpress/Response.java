@@ -1,13 +1,16 @@
 
 package com.zaba.jafoole.zaba.qpxexpress;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 
-public class Response implements Serializable {
+public class Response implements Serializable{
 
     @SerializedName("kind")
     @Expose
@@ -51,7 +54,6 @@ public class Response implements Serializable {
     public void setTrips(Trips trips) {
         this.trips = trips;
     }
-
 
 
 }

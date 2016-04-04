@@ -2,12 +2,16 @@
 package com.zaba.jafoole.zaba.qpxexpress;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
 
-public class City {
+public class City implements Serializable, Parcelable{
 
     @SerializedName("kind")
     @Expose
@@ -95,5 +99,13 @@ public class City {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

@@ -56,7 +56,8 @@ public class OneWayFragment extends Fragment {
         final DatePickerDialog.OnDateSetListener departListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                departDateEditText.setText(dayOfMonth + "/" + (monthOfYear+1) +  "/" + year);
+                departDateEditText.setText(year + "-" + (monthOfYear+1) +  "-" + dayOfMonth);
+
             }
         };
 

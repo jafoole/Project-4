@@ -67,17 +67,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollView"
-        android:layout_alignTop="@+id/flightsListView">
+        android:layout_alignTop="@+id/cardList">
 
     </ScrollView>
 
-    <ListView
-        android:id="@+id/flightsListView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cardList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/frameLayout2"
         android:layout_alignLeft="@+id/scrollView"
-        android:layout_alignStart="@+id/scrollView" />
+        android:layout_alignStart="@+id/scrollView"/>
+    
+    
+    <!--<ListView-->
+        <!--android:id="@+id/flightsListView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/frameLayout2"-->
+        <!--android:layout_alignLeft="@+id/scrollView"-->
+        <!--android:layout_alignStart="@+id/scrollView" />-->
 
 
 </RelativeLayout>

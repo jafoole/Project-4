@@ -1,6 +1,10 @@
 
 package com.zaba.jafoole.zaba.qpxexpress;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 
 
 
-public class Slouse {
+public class Slouse implements Serializable, Parcelable {
 
     @SerializedName("kind")
     @Expose
@@ -20,6 +24,7 @@ public class Slouse {
     @SerializedName("segment")
     @Expose
     private List<Segment> segment = new ArrayList<Segment>();
+    private int destination;
 
     /**
      * 
@@ -76,5 +81,55 @@ public class Slouse {
     }
 
 
+    public String getDepartureTime() {
+        return segment.get(0).getLeg().get(0).getDepartureTime();
+
+    }
+
+    public String getArrivalTime() {
+        int segPosition = segment.size();
+
+        Segment segmentType = segment.get(segPosition - 1);
+
+        int lastLegPostion = segmentType.getLeg().size();
+
+        return segmentType.getLeg().get(lastLegPostion - 1).getArrivalTime();
+
+    };
+
+
+
+//    public Integer getDuration(){
+//        Integer segmentAdded = 0;
+//      for (Segment currentSegment : segment){
+//          segmentAdded += currentSegment.getDuration();
+//      }
+//        return segmentAdded;
+//    };
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
+
+    public String getOrigin() {
+        return segment.get(0).getLeg().get(0).getOrigin();
+    }
+
+    public String getDestination() {
+
+        int segPosition = segment.size();
+
+        Segment segmentType = segment.get(segPosition - 1);
+        int lastLegPosition = segmentType.getLeg().size();
+
+        return segmentType.getLeg().get(lastLegPosition -1).getDestination();
+    }
 
 }

@@ -3,6 +3,8 @@ package com.zaba.jafoole.zaba;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,7 +23,11 @@ public class FlightsListActivity extends AppCompatActivity {
     TextView mDatesSelectedTextView;
     ListView mListView;
 
-    List<TripOption> tripOptions;
+    List<TripOption> tripOption;
+
+//    List<Response> list;
+
+    CardViewAdapter mAdapter;
 
 
     @Override
@@ -29,10 +35,14 @@ public class FlightsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights_list);
 
+
+
         backButton = (ImageView)findViewById(R.id.backButton1);
         mTravelSelectedTextView = (TextView) findViewById(R.id.travelSelectedTextView);
         mDatesSelectedTextView = (TextView) findViewById(R.id.datesSelectedTextView);
-        mListView = (ListView) findViewById(R.id.flightsListView);
+//        mListView = (ListView) findViewById(R.id.flightsListView);
+
+
 
         String depart_from = getIntent().getStringExtra("DEPART_FROM");
         String fly_to = getIntent().getStringExtra("FLY_TO");
@@ -45,8 +55,51 @@ public class FlightsListActivity extends AppCompatActivity {
 
         Response returnedResponse = (Response)getIntent().getSerializableExtra("RESPONSE");
 
+        tripOption = returnedResponse.getTrips().getTripOption();
 
-        tripOptions = returnedResponse.getTrips().getTripOption();
+        mAdapter = new CardViewAdapter(tripOption);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(FlightsListActivity.this);
+
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(mAdapter);
+
+//        if (tripOption.size() == 0) {
+
+
+//            protected TextView mOutboundDepartureTime;
+//            protected TextView mOutboundArrivalTime;
+//            protected TextView mOutboundOrigin;
+//            protected TextView mOutboundDestination;
+//            protected TextView mOutboundDuration;
+//
+//            //Inbound member variables
+//            protected TextView mInboundDepartureTime;
+//            protected TextView mInboundArrivalTime;
+//            protected TextView mInboundOrigin;
+//            protected TextView mInboundDestination;
+//            protected TextView mInboundDuration;
+
+//            String outboundDepartureTime = tripOption.get().getSlice().get().getSegment().get().getLeg().get().getDepartureTime();
+
+
+
+
+
+
+
+
+
+
+
+            //        String theOutboundFlight = String.valueOf(tripOptions.get(3).getOutboundFlights());
+//        String theReturnSegment = String.valueOf(tripOptions.get(3).getOutboundFlights().getSegment());
+
+//        }
+
 
 
 

@@ -190,6 +190,7 @@ public class RoundTripFragment extends Fragment {
             JSONObject request = new JSONObject();
             JSONArray slice = new JSONArray();
             JSONObject aSlice = new JSONObject();
+            JSONObject bSlice = new JSONObject();
 //            JSONObject solutions = new JSONObject();
 
 
@@ -198,16 +199,25 @@ public class RoundTripFragment extends Fragment {
                 try {
                     passengers.put("adultCount", 1);
                     request.put("passengers", passengers);
-                    aSlice.put("origin", departFrom);
 
+
+                    aSlice.put("origin", departFrom);
 
                     aSlice.put("destination", flyTo);
                     aSlice.put("date", flyDate);
                     slice.put(0, aSlice);
+
+
+                    bSlice.put("origin", flyTo);
+                    bSlice.put("destination", departFrom);
+                    bSlice.put("date", returnDate);
+                    slice.put(1,bSlice);
+
                     request.put("slice", slice);
 
-                        request.put("solutions", "1");
+                    request.put("solutions", 10);
                     theRequest.put("request", request);
+
                 } catch (JSONException e1) {
                     e1.printStackTrace();
                 }

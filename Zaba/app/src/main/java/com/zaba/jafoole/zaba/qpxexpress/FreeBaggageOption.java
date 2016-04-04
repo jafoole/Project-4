@@ -1,6 +1,10 @@
 
 package com.zaba.jafoole.zaba.qpxexpress;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 
 
 
-public class FreeBaggageOption {
+public class FreeBaggageOption implements Serializable, Parcelable {
 
     @SerializedName("kind")
     @Expose
@@ -139,5 +143,13 @@ public class FreeBaggageOption {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

@@ -1,11 +1,16 @@
 
 package com.zaba.jafoole.zaba.qpxexpress;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
-public class Flight {
+
+public class Flight implements Serializable, Parcelable {
 
     @SerializedName("carrier")
     @Expose
@@ -51,5 +56,13 @@ public class Flight {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

@@ -1,79 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="15dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/flightTimeTextView"
+                android:id="@+id/outboundDepartureTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1:25 PM - 4:15PM"
+                android:text="1:25 PM"
                 />
 
             <TextView
-                android:id="@+id/departFlightRoute"
+                android:id="@+id/dashSeparator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LGA - ABV"
-                android:layout_below="@id/flightTimeTextView"/>
+                android:text=" - "
+                android:layout_alignTop="@+id/inboundDepartureTime"
+                android:layout_toRightOf="@+id/inboundDepartureTime"
+                android:layout_toEndOf="@+id/inboundDepartureTime" />
 
             <TextView
-                android:id="@+id/departFlightRouteHoursTextView"
+                android:id="@+id/outboundArrivalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7:25 PM"
+                android:layout_above="@+id/outboundDestination"
+                android:layout_toRightOf="@+id/dashSeparator3"
+                android:layout_toEndOf="@+id/dashSeparator3" />
+
+            <TextView
+                android:id="@+id/outboundOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LGA"
+                android:layout_below="@id/outboundDepartureTime"/>
+
+            <TextView
+                android:id="@+id/dashSeparator2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                android:layout_below="@+id/outboundDepartureTime"
+                android:layout_toRightOf="@+id/outboundOrigin"
+                android:layout_toEndOf="@+id/outboundOrigin" />
+
+
+
+            <TextView
+                android:id="@+id/outboundDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JFK"
+                android:layout_alignTop="@+id/dashSeparator2"
+                android:layout_toRightOf="@+id/dashSeparator2"
+                android:layout_toEndOf="@+id/dashSeparator2" />
+
+            <TextView
+                android:id="@+id/outboundDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="21h 50m"
-                android:layout_alignTop="@+id/flightTimeTextView"
+                android:layout_alignTop="@+id/outboundDepartureTime"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
             <TextView
-                android:id="@+id/returnFlightRouteTextView"
+                android:id="@+id/inboundDepartureTime"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10:20 PM - 7:47 PM"
-                android:layout_below="@id/departFlightRoute"/>
+                android:text="10:20PM"
+                android:layout_below="@id/outboundOrigin"/>
 
             <TextView
-                android:id="@+id/returnFlightRoute"
+                android:id="@+id/dashSeparator3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ABV - JFK"
-                android:layout_below="@id/returnFlightRouteTextView"/>
+                android:text=" - "
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/outboundDepartureTime"
+                android:layout_toEndOf="@+id/outboundDepartureTime" />
+
+
+
 
             <TextView
-                android:id="@+id/returnFlightRouteHours"
+                android:id="@+id/inboundArrivalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2:20PM"
+                android:layout_above="@+id/inboundDestination"
+                android:layout_toRightOf="@+id/dashSeparator"
+                android:layout_toEndOf="@+id/dashSeparator" />
+
+
+            <TextView
+                android:id="@+id/inboundOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ABV"
+                android:layout_below="@id/inboundDepartureTime"/>
+
+            <TextView
+                android:id="@+id/dashSeparator4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                android:layout_above="@+id/saleTotal"
+                android:layout_toRightOf="@+id/inboundOrigin"
+                android:layout_toEndOf="@+id/inboundOrigin" />
+
+
+            <TextView
+                android:id="@+id/inboundDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JFK"
+                android:layout_above="@+id/saleTotal"
+                android:layout_toRightOf="@+id/dashSeparator4"
+                android:layout_toEndOf="@+id/dashSeparator4" />
+
+
+            <TextView
+                android:id="@+id/inboundDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="22h 27m"
 
-                android:layout_alignTop="@+id/returnFlightRouteTextView"
-                android:layout_alignLeft="@+id/departFlightRouteHoursTextView"
-                android:layout_alignStart="@+id/departFlightRouteHoursTextView" />
+                android:layout_alignTop="@+id/inboundDepartureTime"
+                android:layout_alignLeft="@+id/outboundDuration"
+                android:layout_alignStart="@+id/outboundDuration" />
 
             <TextView
-                android:id="@+id/priceTextView"
+                android:id="@+id/saleTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$ 1050"
-                android:layout_below="@id/returnFlightRoute"
+                android:layout_below="@id/inboundOrigin"
                 android:layout_marginTop="15dp"
                 />
 
         </RelativeLayout>
-        
-        
+
+
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>
