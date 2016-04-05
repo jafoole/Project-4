@@ -8,13 +8,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/frameLayout2">
+        android:id="@+id/frameLayout2"
+        android:elevation="7dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="?attr/colorPrimary"
+
             >
 
         </android.support.v7.widget.Toolbar>
@@ -63,12 +65,12 @@
             android:text="ABV"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:layout_above="@+id/departDateSelectedTextView"
+            android:layout_above="@+id/departDateSelected"
             android:layout_toRightOf="@+id/dashSeparator5"
             android:layout_toEndOf="@+id/dashSeparator5" />
 
         <TextView
-            android:id="@+id/departDateSelectedTextView"
+            android:id="@+id/departDateSelected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sat, April 16"
@@ -79,24 +81,24 @@
             android:layout_alignStart="@+id/travelSelectedOrigin" />
 
         <TextView
-            android:id="@+id/returnDateSelectedTextView"
+            android:id="@+id/returnDateSelected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sat, April 23"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:layout_below="@+id/departDateSelectedTextView"
+            android:layout_below="@+id/departDateSelected"
             android:layout_alignLeft="@+id/travelSelectedOrigin"
             android:layout_alignStart="@+id/travelSelectedOrigin" />
 
         <TextView
-            android:id="@+id/datesSelectedTextView1"
+            android:id="@+id/passengerCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1 Adult"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:layout_below="@+id/returnDateSelectedTextView"
+            android:layout_below="@+id/returnDateSelected"
             android:layout_alignLeft="@+id/travelSelectedOrigin"
             android:layout_alignStart="@+id/travelSelectedOrigin" />
 
@@ -105,13 +107,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_share_white_24dp"
-            android:layout_above="@+id/departDateSelectedTextView"
+            android:layout_above="@+id/departDateSelected"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="5dp"/>
 
         <TextView
-            android:id="@+id/chosenPriceTextView"
+            android:id="@+id/saleTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$ 1,217"
@@ -129,16 +131,16 @@
             android:layout_height="wrap_content"
             android:text="via Priceline"
             android:textColor="#FFFFFF"
-            android:layout_above="@+id/datesSelectedTextView1"
-            android:layout_alignRight="@+id/chosenPriceTextView"
-            android:layout_alignEnd="@+id/chosenPriceTextView" />
+            android:layout_above="@+id/passengerCount"
+            android:layout_alignRight="@+id/saleTotal"
+            android:layout_alignEnd="@+id/saleTotal" />
 
         <Button
             android:id="@+id/bookButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BOOK"
-            android:layout_below="@+id/returnDateSelectedTextView"
+            android:layout_below="@+id/returnDateSelected"
             android:layout_alignRight="@+id/viaTextView"
             android:layout_alignEnd="@+id/viaTextView"
             android:background="@color/colorAccent"/>

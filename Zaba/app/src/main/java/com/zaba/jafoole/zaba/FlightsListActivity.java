@@ -3,6 +3,7 @@ package com.zaba.jafoole.zaba;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -23,17 +24,20 @@ public class FlightsListActivity extends AppCompatActivity {
     TextView mDatesSelectedTextView;
     ListView mListView;
 
-    List<TripOption> tripOption;
 
-//    List<Response> list;
+    List<TripOption> tripOption;
+    List<TripOption> SecondTripOption;
 
     CardViewAdapter mAdapter;
+    SecondCardViewAdapter mSecondAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights_list);
+
+
 
 
 
@@ -47,34 +51,61 @@ public class FlightsListActivity extends AppCompatActivity {
         String depart_from = getIntent().getStringExtra("DEPART_FROM");
         String fly_to = getIntent().getStringExtra("FLY_TO");
         String fly_date = getIntent().getStringExtra("FLY_DATE");
+
         String return_date = getIntent().getStringExtra("RETURN_DATE");
 
 
         mTravelSelectedTextView.setText(depart_from + " - " + fly_to);
+
         mDatesSelectedTextView.setText(fly_date + " - " + return_date);
 
-        Response returnedResponse = (Response)getIntent().getSerializableExtra("RESPONSE");
 
-        tripOption = returnedResponse.getTrips().getTripOption();
+        String whichWay = getIntent().getStringExtra("WHICH_WAY");
 
-        mAdapter = new CardViewAdapter(tripOption);
+        //Thanks to DAVID for this collaboration effort.
+            if (whichWay.equals("ROUND_TRIP")){
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(FlightsListActivity.this);
+                Response returnedResponse = (Response)getIntent().getSerializableExtra("RESPONSE");
+            tripOption = returnedResponse.getTrips().getTripOption();
 
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mAdapter);
+            mAdapter = new CardViewAdapter(tripOption);
 
+            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
+            recyclerView.setHasFixedSize(true);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(FlightsListActivity.this);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+            recyclerView.setAdapter(mAdapter);
+
+        } else {
+
+                Response oneWayResponse = (Response) getIntent().getSerializableExtra("RESPONSE_ONE_WAY");
+                    SecondTripOption = oneWayResponse.getTrips().getTripOption();
+
+                    mSecondAdapter = new SecondCardViewAdapter(SecondTripOption);
+
+                    RecyclerView recyclerViewSecond = (RecyclerView) findViewById(R.id.cardList);
+                    recyclerViewSecond.setHasFixedSize(true);
+                    LinearLayoutManager layoutManagerSecond = new LinearLayoutManager(FlightsListActivity.this);
+
+                    layoutManagerSecond.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerViewSecond.setLayoutManager(layoutManagerSecond);
+                    recyclerViewSecond.setItemAnimator(new DefaultItemAnimator());
+
+                    recyclerViewSecond.setAdapter(mSecondAdapter);
+
             }
-        });
-        
 
+
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        
     }
 }

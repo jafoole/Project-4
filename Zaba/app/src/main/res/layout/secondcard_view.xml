@@ -32,16 +32,6 @@
                 />
 
             <TextView
-                android:id="@+id/dashSeparator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  -  "
-                android:layout_alignTop="@+id/inboundDepartureTime"
-                android:layout_toRightOf="@+id/inboundDepartureTime"
-                android:layout_toEndOf="@+id/inboundDepartureTime"
-                android:textSize="15sp"/>
-
-            <TextView
                 android:id="@+id/outboundArrivalTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,15 +82,6 @@
                 android:textSize="15sp"/>
 
             <TextView
-                android:id="@+id/inboundDepartureTime"
-                android:layout_marginTop="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10:20PM"
-                android:layout_below="@id/outboundOrigin"
-                android:textSize="15sp"/>
-
-            <TextView
                 android:id="@+id/dashSeparator3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,59 +92,6 @@
                 android:textSize="15sp"/>
 
 
-
-
-            <TextView
-                android:id="@+id/inboundArrivalTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2:20PM"
-                android:layout_above="@+id/inboundDestination"
-                android:layout_toRightOf="@+id/dashSeparator"
-                android:layout_toEndOf="@+id/dashSeparator"
-                android:textSize="15sp"/>
-
-
-            <TextView
-                android:id="@+id/inboundOrigin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ABV"
-                android:layout_below="@id/inboundDepartureTime"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:id="@+id/dashSeparator4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  -  "
-                android:layout_above="@+id/saleTotal"
-                android:layout_toRightOf="@+id/inboundOrigin"
-                android:layout_toEndOf="@+id/inboundOrigin"
-                android:textSize="15sp"/>
-
-
-            <TextView
-                android:id="@+id/inboundDestination"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="JFK"
-                android:layout_above="@+id/saleTotal"
-                android:layout_toRightOf="@+id/dashSeparator4"
-                android:layout_toEndOf="@+id/dashSeparator4"
-                android:textSize="15sp"/>
-
-
-            <TextView
-                android:id="@+id/inboundDuration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="22h 27m"
-                android:layout_alignTop="@+id/inboundDepartureTime"
-                android:layout_alignLeft="@+id/outboundDuration"
-                android:layout_alignStart="@+id/outboundDuration"
-                android:textSize="15sp"/>
-
             <TextView
                 android:id="@+id/saleTotal"
                 android:layout_width="wrap_content"
@@ -171,9 +99,7 @@
                 android:textStyle="bold"
                 android:text="$ 1050"
                 android:textSize="17sp"
-                android:layout_below="@id/inboundOrigin"
-                android:layout_marginTop="15dp"
-                />
+                android:layout_below="@id/outboundOrigin" />
 
         </RelativeLayout>
 

@@ -22,6 +22,11 @@ public class BookFlightActivity extends AppCompatActivity {
 
     TextView mTravelSelectedOrigin;
     TextView mTravelSelectedDestination;
+    TextView mDepartDateSelected;
+    TextView mReturnDateSelected;
+    TextView mPassengerCount;
+    TextView mSaleTotal;
+
 
 
     @Override
@@ -39,6 +44,11 @@ public class BookFlightActivity extends AppCompatActivity {
         bookButton = (Button)findViewById(R.id.bookButton);
         mTravelSelectedOrigin = (TextView) findViewById(R.id.travelSelectedOrigin);
         mTravelSelectedDestination = (TextView) findViewById(R.id.travelSelectedDestination);
+        mDepartDateSelected = (TextView) findViewById(R.id.departDateSelected);
+        mReturnDateSelected = (TextView) findViewById(R.id.returnDateSelected);
+        mPassengerCount = (TextView) findViewById(R.id.passengerCount);
+        mSaleTotal = (TextView) findViewById(R.id.saleTotal);
+
 
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -69,11 +79,16 @@ public class BookFlightActivity extends AppCompatActivity {
 
         String origin = flightInfo.getOutboundFlights().getOrigin();
         String destination = flightInfo.getOutboundFlights().getDestination();
+        String departDate = flightInfo.getOutboundFlights().getDepartureTime();
+        String returnDate = flightInfo.getInboundFlights().getArrivalTime();
+        String saleTotal = flightInfo.getSaleTotal();
 
 
         mTravelSelectedOrigin.setText(origin);
         mTravelSelectedDestination.setText(destination);
+        mDepartDateSelected.setText(departDate);
+        mReturnDateSelected.setText(returnDate);
 
-
+        mSaleTotal.setText(saleTotal);
     }
 }

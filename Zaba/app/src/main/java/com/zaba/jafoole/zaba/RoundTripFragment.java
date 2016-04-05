@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -103,6 +104,7 @@ public class RoundTripFragment extends Fragment {
         mFab = (FloatingActionButton)view.findViewById(R.id.fab);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 
+
         final Calendar calendar = Calendar.getInstance();
 
 
@@ -162,14 +164,16 @@ public class RoundTripFragment extends Fragment {
 
         @Override
         protected void onPreExecute() {
-            super.onPreExecute();
+
+            mProgressBar.setVisibility(View.VISIBLE);
+
 
             departFrom = departingFrom.getText().toString();
             flyTo = flyingTo.getText().toString();
             flyDate = mDepartDateEditText.getText().toString();
             returnDate = mReturnDateEditText.getText().toString();
 
-
+            super.onPreExecute();
 
 
 
@@ -215,7 +219,7 @@ public class RoundTripFragment extends Fragment {
 
                     request.put("slice", slice);
 
-                    request.put("solutions", 10);
+                    request.put("solutions", 20);
                     theRequest.put("request", request);
 
                 } catch (JSONException e1) {
@@ -231,8 +235,12 @@ public class RoundTripFragment extends Fragment {
 
                 @Override
                 public void onResponse(JSONObject response) {
+
                     Gson gson = new Gson();
                     com.zaba.jafoole.zaba.qpxexpress.Response response1 = gson.fromJson(response.toString(), com.zaba.jafoole.zaba.qpxexpress.Response.class);
+                    if (mProgressBar.getVisibility() == View.VISIBLE) {
+                        mProgressBar.setVisibility(View.GONE);
+                    }
                     Toast.makeText(getContext(), "Response Completed", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getContext(), FlightsListActivity.class);
@@ -241,6 +249,7 @@ public class RoundTripFragment extends Fragment {
                     intent.putExtra("FLY_DATE",flyDate);
                     intent.putExtra("RETURN_DATE",returnDate);
                     intent.putExtra("RESPONSE", response1);
+                    intent.putExtra("WHICH_WAY", "ROUND_TRIP");
                     startActivity(intent);
 
 
@@ -276,9 +285,6 @@ public class RoundTripFragment extends Fragment {
 
 
 
-
-
-
             return null;
 
         }
@@ -286,8 +292,6 @@ public class RoundTripFragment extends Fragment {
         @Override
         protected void onPostExecute(com.zaba.jafoole.zaba.qpxexpress.Response response) {
             super.onPostExecute(response);
-
-
 
 
         }
