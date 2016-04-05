@@ -34,8 +34,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -134,21 +137,13 @@ public class OneWayFragment extends Fragment {
             flyTo = flyingTo.getText().toString();
             flyDate = mDepartDateEditText.getText().toString();
 
+
             super.onPreExecute();
 
-
-
-//            "https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyAHFTNJy-9f4e0BSUN3E1QF-USEOKMNLUA"
-
-
-
-//            https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAHFTNJy-9f4e0BSUN3E1QF-USEOKMNLUA
         }
 
         @Override
         protected com.zaba.jafoole.zaba.qpxexpress.Response doInBackground(String... params) {
-
-//            sendPost();
 
 
             JSONObject theRequest = new JSONObject();
@@ -173,7 +168,7 @@ public class OneWayFragment extends Fragment {
 
                     request.put("slice", slice);
 
-                    request.put("solutions", 1);
+                    request.put("solutions", 20);
                     theRequest.put("request", request);
 
                 } catch (JSONException e1) {

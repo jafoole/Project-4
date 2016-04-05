@@ -106,6 +106,6 @@ public class FlightsListActivity extends AppCompatActivity {
                     finish();
                 }
             });
-        
+
     }
 }

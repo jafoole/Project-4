@@ -35,7 +35,6 @@ public class BookFlightActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_flight);
 
 
-
         TripOption flightInfo = (TripOption)getIntent().getSerializableExtra("POSITION");
 
 
@@ -87,7 +86,13 @@ public class BookFlightActivity extends AppCompatActivity {
         mTravelSelectedOrigin.setText(origin);
         mTravelSelectedDestination.setText(destination);
         mDepartDateSelected.setText(departDate);
-        mReturnDateSelected.setText(returnDate);
+
+        if (returnDate == null){
+            mReturnDateSelected.setText("");
+        }else {
+            mReturnDateSelected.setText(returnDate);
+        }
+
 
         mSaleTotal.setText(saleTotal);
     }

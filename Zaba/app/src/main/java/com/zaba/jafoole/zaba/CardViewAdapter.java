@@ -18,6 +18,7 @@ import com.zaba.jafoole.zaba.qpxexpress.Slouse;
 import com.zaba.jafoole.zaba.qpxexpress.TripOption;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,27 +65,27 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
         TripOption responseOption = mTripOption.get(position);
 
 
+        Date date = new Date();
 
+        Slouse outboundSlice = responseOption.getSlice().get(0);
 
-            Slouse outboundSlice = responseOption.getSlice().get(0);
+        Slouse inboundSlice = responseOption.getSlice().get(1);
 
-            Slouse inboundSlice = responseOption.getSlice().get(1);
+        //Outbound information.
+        holder.mOutboundDepartureTime.setText(outboundSlice.getDepartureTime());
+        holder.mOutboundArrivalTime.setText(outboundSlice.getArrivalTime());
+        holder.mOutboundOrigin.setText(outboundSlice.getOrigin());
+        holder.mOutboundDestination.setText(outboundSlice.getDestination());
+        holder.mOutboundDuration.setText(String.valueOf(outboundSlice.getDuration()));
 
-            //Outbound information.
-            holder.mOutboundDepartureTime.setText(outboundSlice.getDepartureTime());
-            holder.mOutboundArrivalTime.setText(outboundSlice.getArrivalTime());
-            holder.mOutboundOrigin.setText(outboundSlice.getOrigin());
-            holder.mOutboundDestination.setText(outboundSlice.getDestination());
-            holder.mOutboundDuration.setText(String.valueOf(outboundSlice.getDuration()));
+        //Inbound information.
+        holder.mInboundDepartureTime.setText(inboundSlice.getDepartureTime());
+        holder.mInboundArrivalTime.setText(inboundSlice.getArrivalTime());
+        holder.mInboundOrigin.setText(inboundSlice.getOrigin());
+        holder.mInboundDestination.setText(inboundSlice.getDestination());
+        holder.mInboundDuration.setText(String.valueOf(inboundSlice.getDuration()));
 
-            //Inbound information.
-            holder.mInboundDepartureTime.setText(inboundSlice.getDepartureTime());
-            holder.mInboundArrivalTime.setText(inboundSlice.getArrivalTime());
-            holder.mInboundOrigin.setText(inboundSlice.getOrigin());
-            holder.mInboundDestination.setText(inboundSlice.getDestination());
-            holder.mInboundDuration.setText(String.valueOf(inboundSlice.getDuration()));
-
-            holder.mSaleTotal.setText(String.valueOf(responseOption.getSaleTotal()));
+        holder.mSaleTotal.setText(String.valueOf(responseOption.getSaleTotal()));
 
 
 
@@ -159,7 +160,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-                this.itemClickListener.onItemClick(v, getLayoutPosition());
+            this.itemClickListener.onItemClick(v, getLayoutPosition());
 
         }
 

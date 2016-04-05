@@ -131,20 +131,30 @@
             android:layout_height="wrap_content"
             android:text="via Priceline"
             android:textColor="#FFFFFF"
-            android:layout_above="@+id/passengerCount"
+            android:layout_below="@+id/saleTotal"
             android:layout_alignRight="@+id/saleTotal"
             android:layout_alignEnd="@+id/saleTotal" />
 
-        <Button
-            android:id="@+id/bookButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BOOK"
-            android:layout_below="@+id/returnDateSelected"
-            android:layout_alignRight="@+id/viaTextView"
-            android:layout_alignEnd="@+id/viaTextView"
-            android:background="@color/colorAccent"/>
-
     </RelativeLayout>
+
+    <TextView
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:text="Before purchasing your ticket, make sure that you \n check to confirm that this is the flight that you are looking for.\n When you are ready to purchase the ticket, press the Book button below, and\n it will take you to the carriers website. Happy Travels! "
+        android:layout_below="@+id/frameLayout2"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BOOK"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="257dp" />
 
 </RelativeLayout>

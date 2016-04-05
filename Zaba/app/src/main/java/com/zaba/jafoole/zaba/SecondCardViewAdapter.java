@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zaba.jafoole.zaba.qpxexpress.Slouse;
 import com.zaba.jafoole.zaba.qpxexpress.TripOption;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -57,14 +59,7 @@ public class SecondCardViewAdapter extends RecyclerView.Adapter<SecondCardViewAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-
-
         TripOption responseOption = mTripOption.get(position);
-
-
-
-
-
 
         Slouse outboundSlice = responseOption.getSlice().get(0);
 
@@ -85,16 +80,14 @@ public class SecondCardViewAdapter extends RecyclerView.Adapter<SecondCardViewAd
             @Override
             public void onItemClick(View view, int position) {
 
+                Toast.makeText(view.getContext(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(view.getContext(), BookFlightActivity.class);
-                intent.putExtra("POSITION", (Serializable) mTripOption.get(position));
-//                Toast.makeText(view.getContext(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
-                view.getContext().startActivity(intent);
+//                Intent intent = new Intent(view.getContext(), BookFlightActivity.class);
+//                intent.putExtra("POSITION", (Serializable) mTripOption.get(0));
+//                view.getContext().startActivity(intent);
             }
         });
-
-
     }
 
     @Override
@@ -113,7 +106,6 @@ public class SecondCardViewAdapter extends RecyclerView.Adapter<SecondCardViewAd
         protected TextView mOutboundOrigin;
         protected TextView mOutboundDestination;
         protected TextView mOutboundDuration;
-
 
 
         //Total Trip Price
