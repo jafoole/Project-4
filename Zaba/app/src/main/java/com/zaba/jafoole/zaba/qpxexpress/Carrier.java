@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 
-public class Carrier implements Serializable, Parcelable {
+public class Carrier implements Serializable {
 
     @SerializedName("kind")
     @Expose
@@ -77,14 +77,4 @@ public class Carrier implements Serializable, Parcelable {
         this.name = name;
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }

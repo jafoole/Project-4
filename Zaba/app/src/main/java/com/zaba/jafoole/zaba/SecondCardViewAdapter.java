@@ -83,9 +83,10 @@ public class SecondCardViewAdapter extends RecyclerView.Adapter<SecondCardViewAd
                 Toast.makeText(view.getContext(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
 
-//                Intent intent = new Intent(view.getContext(), BookFlightActivity.class);
-//                intent.putExtra("POSITION", (Serializable) mTripOption.get(0));
-//                view.getContext().startActivity(intent);
+                Intent intent = new Intent(view.getContext(), BookFlightActivity.class);
+                intent.putExtra("POSITION_ONE", (Serializable) mTripOption.get(0));
+                intent.putExtra("THE_WAY", "THE_ONE_WAY");
+                view.getContext().startActivity(intent);
             }
         });
     }

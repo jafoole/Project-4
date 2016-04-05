@@ -12,7 +12,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Trips implements Serializable, Parcelable{
+public class Trips implements Serializable{
 
     @SerializedName("kind")
     @Expose
@@ -99,14 +99,23 @@ public class Trips implements Serializable, Parcelable{
         this.tripOption = tripOption;
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getCarrierName(){
+        return data.getCarrier().get(0).getName();
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
+//    public String getDepartureTime() {
+//        return segment.get(0).getLeg().get(0).getDepartureTime();
+//
+//    }
+//
+//    public String getArrivalTime() {
+//        int segPosition = segment.size();
+//
+//        Segment segmentType = segment.get(segPosition - 1);
+//
+//        int lastLegPostion = segmentType.getLeg().size();
+//
+//        return segmentType.getLeg().get(lastLegPostion - 1).getArrivalTime();
+//
+//    };

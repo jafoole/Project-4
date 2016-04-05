@@ -97,6 +97,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
 
                 Intent intent = new Intent(view.getContext(), BookFlightActivity.class);
                 intent.putExtra("POSITION", (Serializable) mTripOption.get(position));
+                intent.putExtra("THE_WAY", "THE_ROUNDTRIP_WAY");
 //                Toast.makeText(view.getContext(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
                 view.getContext().startActivity(intent);
@@ -144,13 +145,11 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
 
             mOutboundDuration = (TextView) itemView.findViewById(R.id.outboundDuration);
 
-
             mInboundDepartureTime = (TextView) itemView.findViewById(R.id.inboundDepartureTime);
             mInboundArrivalTime = (TextView) itemView.findViewById(R.id.inboundArrivalTime);
             mInboundOrigin = (TextView) itemView.findViewById(R.id.inboundOrigin);
             mInboundDestination = (TextView) itemView.findViewById(R.id.inboundDestination);
             mInboundDuration = (TextView) itemView.findViewById(R.id.inboundDuration);
-
 
             mSaleTotal = (TextView) itemView.findViewById(R.id.saleTotal);
 

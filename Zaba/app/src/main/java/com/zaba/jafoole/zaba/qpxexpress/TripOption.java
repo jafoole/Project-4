@@ -30,6 +30,16 @@ public class TripOption implements Serializable {
     @Expose
     private List<Pricing> pricing = new ArrayList<Pricing>();
 
+    private List<Trips> trips = new ArrayList<Trips>();
+
+    @SerializedName("carrier")
+    @Expose
+    private List<Carrier> carrier = new ArrayList<Carrier>();
+
+    private Carrier carrierCar = new Carrier();
+
+
+
     /**
      * 
      * @return
@@ -128,6 +138,23 @@ public class TripOption implements Serializable {
         return this.slice.get(1);
     }
 
+    public List<Trips> getTrips() {
+        return trips;
+    }
 
+    public void setTrips(List<Trips> trips) {
+        this.trips = trips;
+    }
+
+    public List<Carrier> getCarrier() {
+        return carrier;
+    }
+    public String getCarrierName() {
+       return carrierCar.getName();
+    }
+
+    public void setCarrier(List<Carrier> carrier) {
+        this.carrier = carrier;
+    }
 
 }

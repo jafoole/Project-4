@@ -81,6 +81,15 @@
                 android:layout_toEndOf="@+id/dashSeparator2"
                 android:textSize="15sp"/>
 
+            <!--<TextView-->
+                <!--android:id="@+id/carrierText"-->
+                <!--android:text="carrierTExt"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_above="@+id/inboundDepartureTime"-->
+                <!--android:layout_alignLeft="@+id/inboundArrivalTime"-->
+                <!--android:layout_alignStart="@+id/inboundArrivalTime" />-->
+
             <TextView
                 android:id="@+id/outboundDuration"
                 android:layout_width="wrap_content"

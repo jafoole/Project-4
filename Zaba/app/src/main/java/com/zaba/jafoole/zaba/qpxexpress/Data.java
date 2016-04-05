@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 
 
 
-public class Data implements Serializable, Parcelable {
+public class Data implements Serializable {
 
     @SerializedName("kind")
     @Expose
@@ -143,13 +143,5 @@ public class Data implements Serializable, Parcelable {
     }
 
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
